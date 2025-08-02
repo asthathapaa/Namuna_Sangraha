@@ -177,12 +177,10 @@
             .painting-gallery {
                 grid-template-columns: 1fr;
             }
-            .profile-image {
-                width: 150px;
-                height: 150px;
-            }
+
             .hero-content {
                 flex-direction: column;
+                width: 2000px;
             }
             .hero-image {
                 margin-bottom: 2rem;
@@ -227,7 +225,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            max-width: 1200px;
+            max-width: 1900px;
             margin: 0 auto;
             padding: 2rem;
             position: relative;
@@ -237,6 +235,7 @@
         .hero-text {
             flex: 1;
             padding-right: 3rem;
+            width: 100%;
         }
         
         .hero-image {
@@ -295,7 +294,7 @@
             font-size: 1.2rem;
             color: rgba(255, 255, 255, 0.9);
             margin-bottom: 2rem;
-            max-width: 500px;
+            max-width: 1000px;
             line-height: 1.6;
         }
         
