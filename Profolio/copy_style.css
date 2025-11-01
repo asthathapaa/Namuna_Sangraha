@@ -13,7 +13,7 @@
             color: var(--text-color);
             scroll-behavior: smooth;
             min-height: 100vh;
-            background: linear-gradient(-45deg, #a9b9df, #f1eded, #eceaef, #012964);
+            background: linear-gradient(-45deg, #FFD60A, #0052CC, #FFD60A, #0052CC);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
         }
@@ -53,29 +53,6 @@
             width: 100%;
         }
 
-        .header {
-  backdrop-filter: blur(10px);
-  background: var(--glass-bg);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* FIX for uneven height */
-nav {
-  height: 75px; /* set a consistent navbar height */
-}
-
-.profile-image {
-  width: 97px !important;       /* small enough to fit nav height */
-  height: 97px !important;
-  object-fit: cover;
-  display: block;
-  margin: 0;
-}
-
-        
         .card {
             background: var(--card-bg);
             backdrop-filter: blur(5px);
@@ -205,14 +182,9 @@ nav {
                 flex-direction: column;
                 width: 2000px;
             }
-            .profile-image {
-    width: 1cm;       /* adjust width to fit navbar */
-    height: 1cm;      /* keep square */
-    border-radius: 50%; /* makes it circular */
-    object-fit: cover;  /* prevents stretching */
-}
-
-
+            .hero-image {
+                margin-bottom: 2rem;
+            }
             .name-highlight {
                 font-size: 2.5rem;
             }
@@ -354,7 +326,7 @@ nav {
         }
         
         .social-link {
-            color: rgb(2, 2, 46);
+            color: white;
             font-size: 1.2rem;
             transition: all 0.3s ease;
         }
