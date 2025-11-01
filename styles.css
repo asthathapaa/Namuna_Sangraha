@@ -98,7 +98,7 @@
         }
 
         .skill-level {
-            background: linear-gradient(90deg, var(--primary-color), #FFC300);
+            background: linear-gradient(90deg, var(--primary-color), #f1d56c);
             height: 100%;
             transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
         }
