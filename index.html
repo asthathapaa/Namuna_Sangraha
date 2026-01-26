@@ -9,6 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <style>
         body {
@@ -95,64 +97,103 @@
 
     <div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <div class="card-minimal bg-white p-4">
-            <img src="https://images.unsplash.com/photo-1581291518066-8e209700ec9a?auto=format&fit=crop&w=800"
+            <img src="/assets/TravelWebsite.png"
                  class="w-full aspect-video object-cover hover:grayscale-0 transition duration-700">
-            <h3 class="mt-6 font-semibold">User Experience Research</h3>
-            <p class="text-xs text-gray-400 mt-2">Mobile Application • 2025</p>
+            <h3 class="mt-6 font-semibold">Travel Website</h3><br>
+            <a href="https://www.figma.com/proto/yUAyJ5qFcv3V4G7ep1NJL1/TravelWebsite?node-id=0-1&t=xU0OPJzuUDtzCAJl-1" 
+             target="_blank"
+             class="inline-flex items-center gap-1 px-2 py-1 text-sm bg-gray-800 text-white rounded hover:bg-yellow-500 transition">
+             <i class="fab fa-figma text-xs"></i>View on Figma
+            </a>
         </div>
 
         <div class="card-minimal bg-white p-4">
-            <img src="https://images.unsplash.com/photo-1618761714954-0b8cd0026356?auto=format&fit=crop&w=800"
+            <img src="/assets/404 page.png"
                  class="w-full aspect-video object-cover hover:grayscale-0 transition duration-700">
-            <h3 class="mt-6 font-semibold">Brand Identity System</h3>
-            <p class="text-xs text-gray-400 mt-2">Visual Design • 2024</p>
+            <h3 class="mt-6 font-semibold">Animated character creation and Design</h3><br>
+            <a href="https://www.figma.com/design/ywu1FfqSMcpFQRVoewy7za/404_animated_page?node-id=0-1&t=stUPbvC2JTCfQyTa-1" 
+             target="_blank"
+             class="inline-flex items-center gap-1 px-2 py-1 text-sm bg-gray-800 text-white rounded hover:bg-yellow-500 transition">
+             <i class="fab fa-figma text-xs"></i>View on Figma
+            </a>
         </div>
-
         <div class="card-minimal bg-white p-4">
-            <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=800"
+            <img src="/assets/Add Property_ Basic.png"
                  class="w-full aspect-video object-cover hover:grayscale-0 transition duration-700">
-            <h3 class="mt-6 font-semibold">SaaS Dashboard</h3>
-            <p class="text-xs text-gray-400 mt-2">Product Design • 2025</p>
+            <h3 class="mt-6 font-semibold">Real Estate Admin Panel – Add Property</h3><br>
+            <a href="https://www.figma.com/design/rX2RPPiOL0mUjZxCu606c2/RealState_design?node-id=1-7&t=ytP9Kx3TCm6JEUdz-1" 
+             target="_blank"
+             class="inline-flex items-center gap-1 px-2 py-1 text-sm bg-gray-800 text-white rounded hover:bg-yellow-500 transition">
+             <i class="fab fa-figma text-xs"></i>View on Figma
+            </a>
         </div>
-    </div>
 </section>
 
 <!-- DEVELOPMENT -->
+<!-- DEVELOPMENT -->
 <section id="development" class="py-24">
-    <div class="max-w-7xl mx-auto px-8 mb-12">
+    <div class="max-w-7xl mx-auto px-8 mb-12 flex justify-between items-end">
         <h2 class="text-3xl font-light uppercase tracking-tighter">
             Code <span class="playfair italic">Development</span>
         </h2>
+        <div class="flex gap-6">
+            <button class="dev-prev text-2xl hover:text-gray-400"><i class="fas fa-long-arrow-alt-left"></i></button>
+            <button class="dev-next text-2xl hover:text-gray-400"><i class="fas fa-long-arrow-alt-right"></i></button>
+        </div>
     </div>
 
-    <div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="card-minimal p-4">
-            <img src="assets/Road-Way.png" class="w-full aspect-[4/3] object-cover mb-6">
-            <span class="text-[10px] tracking-widest font-bold text-gray-300">PYTHON / REACT</span>
-            <h3 class="text-xl font-bold mt-2">RoadWay</h3>
-            <a href="https://github.com/asthathapaa/Aisle.git"
-               class="inline-block mt-4 text-xs border-b border-black">View Repository</a>
-        </div>
+    <div class="swiper devSwiper px-8">
+        <div class="swiper-wrapper">
+            <!-- Project 1 -->
+            <div class="swiper-slide">
+                <div class="card-minimal p-4">
+                    <img src="assets/Road-Way.png" class="w-full aspect-[4/3] object-cover mb-6">
+                    <span class="text-[10px] tracking-widest font-bold text-gray-300">PYTHON / REACT</span>
+                    <h3 class="text-xl font-bold mt-2">RoadWay</h3>
+                    <a href="https://github.com/asthathapaa/Aisle.git"
+                       class="inline-block mt-4 text-xs border-b border-black">View Repository</a>
+                </div>
+            </div>
 
-        <div class="card-minimal p-4">
-            <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800"
-                 class="w-full aspect-[4/3] object-cover mb-6">
-            <span class="text-[10px] tracking-widest font-bold text-gray-300">MONGODB / NODE</span>
-            <h3 class="text-xl font-bold mt-2">Scam Aggregator</h3>
-            <a href="https://github.com/asthathapaa/scam.git"
-               class="inline-block mt-4 text-xs border-b border-black">View Repository</a>
-        </div>
+            <!-- Project 2 -->
+            <div class="swiper-slide">
+                <div class="card-minimal p-4">
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800"
+                         class="w-full aspect-[4/3] object-cover mb-6">
+                    <span class="text-[10px] tracking-widest font-bold text-gray-300">MONGODB / NODE</span>
+                    <h3 class="text-xl font-bold mt-2">Scam Aggregator</h3>
+                    <a href="https://github.com/asthathapaa/scam.git"
+                       class="inline-block mt-4 text-xs border-b border-black">View Repository</a>
+                </div>
+            </div>
 
-        <div class="card-minimal p-4">
-            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800"
-                 class="w-full aspect-[4/3] object-cover mb-6">
-            <span class="text-[10px] tracking-widest font-bold text-gray-300">DOCKER / EXPRESS</span>
-            <h3 class="text-xl font-bold mt-2">CMS API</h3>
-            <a href="https://github.com/asthathapaa/college-management-system.git"
-               class="inline-block mt-4 text-xs border-b border-black">View Repository</a>
+            <!-- Project 3 -->
+            <div class="swiper-slide">
+                <div class="card-minimal p-4">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800"
+                         class="w-full aspect-[4/3] object-cover mb-6">
+                    <span class="text-[10px] tracking-widest font-bold text-gray-300">DOCKER / EXPRESS</span>
+                    <h3 class="text-xl font-bold mt-2">CMS API</h3>
+                    <a href="https://github.com/asthathapaa/college-management-system.git"
+                       class="inline-block mt-4 text-xs border-b border-black">View Repository</a>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="swiper-slide">
+                <div class="card-minimal p-4">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800"
+                         class="w-full aspect-[4/3] object-cover mb-6">
+                    <span class="text-[10px] tracking-widest font-bold text-gray-300">DOCKER / EXPRESS</span>
+                    <h3 class="text-xl font-bold mt-2">CMS API</h3>
+                    <a href="https://github.com/asthathapaa/college-management-system.git"
+                       class="inline-block mt-4 text-xs border-b border-black">View Repository</a>
+                </div>
+            </div>
         </div>
     </div>
 </section>
+
 
 <!-- CV -->
 <!-- CV Section -->
@@ -230,6 +271,22 @@
     <p>© 2026 Astha Thapa</p>
     <p>Curated with Intent</p>
 </footer>
+
+<script>
+    new Swiper(".devSwiper", {
+        slidesPerView: 3,
+        spaceBetween: 30,
+        navigation: {
+            nextEl: ".dev-next",
+            prevEl: ".dev-prev",
+        },
+        breakpoints: {
+            320: { slidesPerView: 1, spaceBetween: 20 },
+            768: { slidesPerView: 2, spaceBetween: 30 },
+            1024: { slidesPerView: 3, spaceBetween: 30 },
+        },
+    });
+</script>
 
 </body>
 </html>
