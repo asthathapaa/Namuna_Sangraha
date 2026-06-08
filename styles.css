@@ -186,6 +186,16 @@
             border: 4px solid white;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
+        .contact-grid {
+         display: grid;
+        grid-template-columns: 1fr 1fr;
+        }
+
+        @media (max-width: 768px) {
+        .contact-grid {
+        grid-template-columns: 1fr;
+        }
+        }
 
         @media (max-width: 640px) {
             .header {
