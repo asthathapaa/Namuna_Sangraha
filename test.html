@@ -56,7 +56,13 @@
             .contact-grid { grid-template-columns: 1fr; }
             .arch-image { height: 400px; margin-top: 2rem; border-radius: 200px 200px 0 0; }
         }
+        .devSwiper {
+        cursor: grab;
+        }
 
+        .devSwiper:active {
+        cursor: grabbing;
+        }
         /* ── GLIDER gap ── */
         .glider-track { column-gap: 20px; }
         .glider-slide { padding: 0 8px; }
@@ -85,7 +91,7 @@
 </nav>
 
 <!-- HERO -->
-<section class="pt-48 pb-32 px-8 max-w-7xl mx-auto">
+<section class="pt-40 pb-32 px-8 max-w-7xl mx-auto">
     <div class="flex flex-col md:flex-row items-center gap-16">
         <div class="w-full md:w-2/3">
             <h1 class="text-2xl md:text-2xl lg:text-9xl font-light tracking-tighter mb-8 leading-tight">
@@ -105,13 +111,12 @@
 
         <!-- LEFT: Quality Assurance -->
         <div class="md:pr-20 pb-16 md:pb-0">
-            <p class="text-[10px] uppercase tracking-[0.3em] font-bold text-gray-400 mb-4">What I do</p>
             <h2 class="text-5xl font-light uppercase tracking-tighter leading-tight mb-8">
-                Quality<br><span class="playfair italic">Assurance</span>
+                Software Quality<br><span class="playfair italic"> Assurance</span>
             </h2>
-            <p class="text-gray-500 text-sm leading-relaxed mb-10 max-w-md">
-                I approach software not just as a builder but as a critical thinker — testing for edge cases, validating flows, and ensuring systems behave as expected. Particularly interested in testing methodologies, system validation, and building reliable user-focused applications.
-            </p>
+            <!-- <p class="text-gray-500 text-sm leading-relaxed mb-10 max-w-md">
+                I approach software not just as a builder 
+                </p> -->
 
             <p class="text-[10px] uppercase tracking-[0.3em] font-bold text-gray-400 mb-3">Focus Areas</p>
             <div class="flex flex-wrap gap-2 mb-10">
@@ -135,41 +140,58 @@
 
         <!-- RIGHT: AWS -->
         <div class="md:pl-20 pt-16 md:pt-0">
-            <p class="text-[10px] uppercase tracking-[0.3em] font-bold text-gray-400 mb-4">Certifications</p>
             <h2 class="text-5xl font-light uppercase tracking-tighter leading-tight mb-8">
                 AWS<br><span class="playfair italic">Academy</span>
             </h2>
-            <p class="text-gray-500 text-sm leading-relaxed mb-10 max-w-md">
+            <p class="text-[10px] uppercase tracking-[0.3em] font-bold text-black-400 mb-4">Certifications</p>
+
+            <!-- <p class="text-gray-500 text-sm leading-relaxed mb-10 max-w-md">
                 Certified in foundational cloud computing and scalable architecture design through Amazon's official training program.
-            </p>
+            </p> -->
 
             <div class="space-y-4">
-                <a href="https://www.credly.com/badges/59d7787d-89ae-436a-a6bb-1039979d34f5/linked_in_profile"
-                   target="_blank"
-                   class="flex items-center justify-between gap-6 border border-gray-100 px-6 py-5 group hover:border-yellow-400 transition-all duration-300">
-                    <div class="flex items-center gap-4">
-                        <i class="fab fa-aws text-3xl text-gray-300 group-hover:text-yellow-500 transition"></i>
-                        <div>
-                            <p class="text-sm font-bold">Cloud Foundations</p>
-                            <p class="text-[9px] text-gray-400 uppercase tracking-widest mt-1">AWS Academy Graduate</p>
-                        </div>
-                    </div>
-                    <span class="text-[9px] uppercase tracking-widest font-bold text-yellow-500 border-b border-yellow-400 pb-0.5 opacity-0 group-hover:opacity-100 transition-all whitespace-nowrap">View on Credly ↗</span>
-                </a>
 
-                <a href="https://www.credly.com/badges/f855fa80-6c26-4db5-8da2-0b2c2ed2c7e7/linked_in_profile"
-                   target="_blank"
-                   class="flex items-center justify-between gap-6 border border-gray-100 px-6 py-5 group hover:border-yellow-400 transition-all duration-300">
-                    <div class="flex items-center gap-4">
-                        <i class="fab fa-aws text-3xl text-gray-300 group-hover:text-yellow-500 transition"></i>
-                        <div>
-                            <p class="text-sm font-bold">Cloud Architecting</p>
-                            <p class="text-[9px] text-gray-400 uppercase tracking-widest mt-1">AWS Academy Graduate</p>
-                        </div>
-                    </div>
-                    <span class="text-[9px] uppercase tracking-widest font-bold text-yellow-500 border-b border-yellow-400 pb-0.5 opacity-0 group-hover:opacity-100 transition-all whitespace-nowrap">View on Credly ↗</span>
-                </a>
+        <a href="https://www.credly.com/badges/59d7787d-89ae-436a-a6bb-1039979d34f5/linked_in_profile"
+           target="_blank"
+           class="flex items-center justify-between gap-6 border border-gray-100 px-6 py-5 group hover:border-yellow-400 transition-all duration-300">
+        
+        <div class="flex items-center gap-4">
+            <i class="fab fa-aws text-3xl text-gray-300 group-hover:text-yellow-500 transition"></i>
+            <div>
+                <p class="text-sm font-bold">Cloud Foundations</p>
+                <p class="text-[9px] text-gray-400 uppercase tracking-widest mt-1">
+                    AWS Academy Graduate
+                </p>
             </div>
+        </div>
+
+        <span class="text-[9px] uppercase tracking-widest font-bold text-yellow-500 border-b border-yellow-400 pb-0.5 opacity-70 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap">
+            View on Credly ↗
+        </span>
+
+         </a>
+
+         <a href="https://www.credly.com/badges/f855fa80-6c26-4db5-8da2-0b2c2ed2c7e7/linked_in_profile"
+            target="_blank"
+            class="flex items-center justify-between gap-6 border border-gray-100 px-6 py-5 group hover:border-yellow-400 transition-all duration-300">
+        
+        <div class="flex items-center gap-4">
+            <i class="fab fa-aws text-3xl text-gray-300 group-hover:text-yellow-500 transition"></i>
+            <div>
+                <p class="text-sm font-bold">Cloud Architecting</p>
+                <p class="text-[9px] text-gray-400 uppercase tracking-widest mt-1">
+                    AWS Academy Graduate
+                </p>
+            </div>
+        </div>
+
+        <span class="text-[9px] uppercase tracking-widest font-bold text-yellow-500 border-b border-yellow-400 pb-0.5 opacity-70 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap">
+            View on Credly ↗
+        </span>
+
+        </a>
+
+        </div>
         </div>
 
     </div>
@@ -177,77 +199,147 @@
 
 <!-- DEVELOPMENT -->
 <section id="development" class="py-24">
-    <div class="max-w-7xl mx-auto px-8 mb-12 flex justify-between items-end">
+    <div class="max-w-7xl mx-auto px-8 mb-12">
         <h2 class="text-3xl font-light uppercase tracking-tighter">
             Code <span class="playfair italic">Development</span>
         </h2>
-        <div class="flex gap-6">
-            <button class="dev-prev text-2xl hover:text-gray-400"><i class="fas fa-long-arrow-alt-left"></i></button>
-            <button class="dev-next text-2xl hover:text-gray-400"><i class="fas fa-long-arrow-alt-right"></i></button>
-        </div>
     </div>
-    <div class="max-w-7xl mx-auto px-8" style="overflow:hidden"><div class="swiper devSwiper" style="overflow:visible">
-        <div class="swiper-wrapper">
 
-            <div class="swiper-slide">
-                <div class="card-minimal p-4">
-                    <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=800" class="w-full aspect-[4/3] object-cover mb-6">
-                    <span class="text-[10px] tracking-widest font-bold text-gray-300">REACT / MANUAL TESTING / FUNCTIONAL TESTING</span>
-                    <h3 class="text-xl font-bold mt-2 mb-2">Homegrown Plant Selling</h3>
-                    <p class="text-xs text-gray-500 leading-relaxed mb-4">Plant-selling web app tested for functionality, usability, and reliability for local Kathmandu Valley buyers.</p>
-                    <div class="flex gap-4">
-                        <a href="https://github.com/asthathapaa/Homegrownplant-testing" target="_blank" class="inline-block text-xs border-b border-black">View Repository</a>
-                        <a href="https://planthomegrown.netlify.app/" target="_blank" class="inline-block text-xs border-b border-gray-400 text-gray-400 hover:border-black hover:text-black transition">Live Site ↗</a>
+    <div class="max-w-7xl mx-auto px-8 overflow-hidden">
+        <div class="swiper devSwiper overflow-visible">
+            <div class="swiper-wrapper">
+
+                <!-- Project 1: Homegrown Plant Selling -->
+                <div class="swiper-slide">
+                    <div class="card-minimal p-4">
+                        <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=800"
+                             class="w-full aspect-[4/3] object-cover mb-6">
+
+                        <span class="text-[10px] tracking-widest font-bold text-gray-300">
+                            REACT / MANUAL TESTING / FUNCTIONAL TESTING
+                        </span>
+
+                        <h3 class="text-xl font-bold mt-2 mb-4">
+                            Homegrown Plant Selling
+                        </h3>
+
+                        <div class="flex gap-4">
+                            <a href="https://github.com/asthathapaa/Homegrownplant-testing"
+                               target="_blank"
+                               class="inline-block text-xs border-b border-black">
+                                View Repository
+                            </a>
+
+                            <a href="https://planthomegrown.netlify.app/"
+                               target="_blank"
+                               class="inline-block text-xs border-b border-gray-400 text-gray-400 hover:border-black hover:text-black transition">
+                                Live Site ↗
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="swiper-slide">
-                <div class="card-minimal p-4">
-                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800" class="w-full aspect-[4/3] object-cover mb-6">
-                    <span class="text-[10px] tracking-widest font-bold text-gray-300">REACT / MANUAL TESTING / BUG REPORTING</span>
-                    <div class="flex items-center justify-between">
-                        <h3 class="text-xl font-bold mt-2 mb-2">Scam Aggregator</h3>
-                        <span class="text-[8px] uppercase tracking-widest font-bold bg-yellow-400 text-black px-2 py-0.5">MBMC Ideax 2024</span>
+                <!-- Project 2: Nepali License Plate Recognition -->
+                <div class="swiper-slide">
+                    <div class="card-minimal p-4">
+                        <img src="assets/Nepali_Plate.jpg"
+                             class="w-full aspect-[4/3] object-cover mb-6">
+
+                        <span class="text-[10px] tracking-widest font-bold text-gray-300">
+                            PYTHON / YOLOV8 / CRNN / MODEL VALIDATION
+                        </span>
+
+                        <h3 class="text-xl font-bold mt-2 mb-4">
+                            Nepali License Plate Recognition
+                        </h3>
+
+                        <a href="https://github.com/asthathapaa/-Nepali_License_Plate_Recognition.git"
+                           target="_blank"
+                           class="inline-block text-xs border-b border-black">
+                            View Repository
+                        </a>
                     </div>
-                    <p class="text-xs text-gray-500 leading-relaxed mb-4">Platform for reporting and tracking scams. Functional and usability testing, test scenarios for input, submission, and edge cases.</p>
-                    <a href="https://github.com/asthathapaa/scam.git" target="_blank" class="inline-block text-xs border-b border-black">View Repository</a>
                 </div>
-            </div>
 
-            <div class="swiper-slide">
-                <div class="card-minimal p-4">
-                    <img src="assets/Road-Way.png" class="w-full aspect-[4/3] object-cover mb-6">
-                    <span class="text-[10px] tracking-widest font-bold text-gray-300">PYTHON / REACT / API TESTING</span>
-                    <div class="flex items-center justify-between">
-                        <h3 class="text-xl font-bold mt-2 mb-2">RoadWay</h3>
-                        <span class="text-[8px] uppercase tracking-widest font-bold bg-yellow-400 text-black px-2 py-0.5">Noskathon-Lite</span>
+                <!-- Project 3: RoadWay -->
+                <div class="swiper-slide">
+                    <div class="card-minimal p-4">
+                        <img src="assets/Road-Way.png"
+                             class="w-full aspect-[4/3] object-cover mb-6">
+
+                        <span class="text-[10px] tracking-widest font-bold text-gray-300">
+                            PYTHON / REACT / API TESTING
+                        </span>
+
+                        <div class="flex items-center justify-between mt-2 mb-4">
+                            <h3 class="text-xl font-bold">
+                                RoadWay
+                            </h3>
+
+                            <span class="text-[8px] uppercase tracking-widest font-bold bg-yellow-400 text-black px-2 py-0.5">
+                                Noskathon-Lite
+                            </span>
+                        </div>
+
+                        <a href="https://github.com/asthathapaa/Aisle.git"
+                           target="_blank"
+                           class="inline-block text-xs border-b border-black">
+                            View Repository
+                        </a>
                     </div>
-                    <p class="text-xs text-gray-500 leading-relaxed mb-4">Traffic route optimization by Team AISLE. Frontend development and UI/functionality validation for route display and navigation.</p>
-                    <a href="https://github.com/asthathapaa/Aisle.git" target="_blank" class="inline-block text-xs border-b border-black">View Repository</a>
                 </div>
-            </div>
 
-            <div class="swiper-slide">
-                <div class="card-minimal p-4">
-                    <img src="assets/Nepali_Plate.jpg" class="w-full aspect-[4/3] object-cover mb-6">
-                    <span class="text-[10px] tracking-widest font-bold text-gray-300">PYTHON / YOLOV8 / CRNN / MODEL VALIDATION</span>
-                    <h3 class="text-xl font-bold mt-2 mb-2">Nepali License Plate Recognition</h3>
-                    <p class="text-xs text-gray-500 leading-relaxed mb-4">Recognition of Nepali Devanagari plates using YOLOv8 and a custom CRNN OCR engine. Published at IEEE ICOIICS 2025.</p>
-                    <a href="https://github.com/asthathapaa/-Nepali_License_Plate_Recognition.git" target="_blank" class="inline-block text-xs border-b border-black">View Repository</a>
+                <!-- Project 4: Scam Aggregator -->
+                <div class="swiper-slide">
+                    <div class="card-minimal p-4">
+                        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800"
+                             class="w-full aspect-[4/3] object-cover mb-6">
+
+                        <span class="text-[10px] tracking-widest font-bold text-gray-300">
+                            REACT / MANUAL TESTING / BUG REPORTING
+                        </span>
+
+                        <div class="flex items-center justify-between mt-2 mb-4">
+                            <h3 class="text-xl font-bold">
+                                Scam Aggregator
+                            </h3>
+
+                            <span class="text-[8px] uppercase tracking-widest font-bold bg-yellow-400 text-black px-2 py-0.5">
+                                MBMC Ideax 2024
+                            </span>
+                        </div>
+
+                        <a href="https://github.com/asthathapaa/scam.git"
+                           target="_blank"
+                           class="inline-block text-xs border-b border-black">
+                            View Repository
+                        </a>
+                    </div>
                 </div>
-            </div>
 
-            <div class="swiper-slide">
-                <div class="card-minimal p-4">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800" class="w-full aspect-[4/3] object-cover mb-6">
-                    <span class="text-[10px] tracking-widest font-bold text-gray-300">DOCKER / EXPRESS / REST API / POSTMAN / AWS</span>
-                    <h3 class="text-xl font-bold mt-2 mb-2">CMS API</h3>
-                    <p class="text-xs text-gray-500 leading-relaxed mb-4">College management system REST API built with Express and Docker. Endpoints tested and validated using Postman.</p>
-                    <a href="https://github.com/asthathapaa/college-management-system.git" target="_blank" class="inline-block text-xs border-b border-black">View Repository</a>
+                <!-- Project 5: HMS QA Testing -->
+                <div class="swiper-slide">
+                    <div class="card-minimal p-4">
+                        <img src="assets/hms.png"
+                             class="w-full aspect-[4/3] object-cover mb-6">
+
+                        <span class="text-[10px] tracking-widest font-bold text-gray-300">
+                            MERN STACK / API TESTING / POSTMAN / QA TESTING
+                        </span>
+
+                        <h3 class="text-xl font-bold mt-2 mb-4">
+                            HMS_QA_Testing
+                        </h3>
+
+                        <a href="https://github.com/asthathapaa/hms_qa_testing"
+                           target="_blank"
+                           class="inline-block text-xs border-b border-black">
+                            View Repository
+                        </a>
+                    </div>
                 </div>
-            </div>
 
+            </div>
         </div>
     </div>
 </section>
@@ -474,6 +566,22 @@
 </footer>
 
 <script>
+    const devSwiper = new Swiper(".devSwiper", {
+    slidesPerView: 1.2,
+    spaceBetween: 24,
+    grabCursor: true,
+    freeMode: true,
+    mousewheel: true,
+
+    breakpoints: {
+        640: {
+            slidesPerView: 2,
+        },
+        1024: {
+            slidesPerView: 3,
+        }
+    }
+});
     new Swiper(".devSwiper", {
         slidesPerView: 3,
         spaceBetween: 30,
