@@ -4,12 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Astha Thapa | Portfolio</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.css">
     <script src="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.js"></script>
+
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #1a1a1a; scroll-behavior: smooth; }
         .playfair { font-family: 'Playfair Display', serif; }
@@ -19,119 +23,51 @@
         .card-minimal:hover { border-color: #000; transform: translateY(-5px); }
         .contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; border-top: 1px solid #000; }
 
-        /* ── DRAG-SCROLL CAROUSEL ── */
-        .drag-scroll {
-            display: flex;
-            gap: 24px;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            cursor: grab;
-            -webkit-overflow-scrolling: touch;
-            padding-bottom: 12px;
-        }
-        .drag-scroll:active { cursor: grabbing; }
-        .drag-scroll::-webkit-scrollbar { height: 3px; }
-        .drag-scroll::-webkit-scrollbar-track { background: #f0f0f0; }
-        .drag-scroll::-webkit-scrollbar-thumb { background: #000; border-radius: 2px; }
-        .drag-scroll .drag-card {
-            flex: 0 0 calc(33.33% - 16px);
-            scroll-snap-align: start;
-            min-width: 280px;
-        }
-        @media (max-width: 1024px) { .drag-scroll .drag-card { flex: 0 0 calc(50% - 12px); } }
-        @media (max-width: 640px) { .drag-scroll .drag-card { flex: 0 0 85%; } }
-
-        /* ── QA SECTION ── */
+        /* QA pills */
         .qa-tool-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 18px;
-            border: 1px solid #e5e5e5;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            transition: all 0.25s ease;
-            position: relative;
-            overflow: hidden;
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 6px 14px; border: 1px solid #1a1a1a;
+            font-size: 9px; font-weight: 700; letter-spacing: 0.2em;
+            text-transform: uppercase; white-space: nowrap; transition: all 0.3s ease;
         }
-        .qa-tool-pill::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: #1a1a1a;
-            transform: translateX(-100%);
-            transition: transform 0.25s ease;
-            z-index: 0;
-        }
-        .qa-tool-pill:hover::before { transform: translateX(0); }
-        .qa-tool-pill:hover { color: #fff; border-color: #1a1a1a; }
-        .qa-tool-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: #eab308; flex-shrink: 0; position: relative; z-index: 1; }
-        .qa-tool-pill span.label { position: relative; z-index: 1; }
-
+        .qa-tool-pill:hover { background-color: #1a1a1a; color: #ffffff; }
+        .qa-tool-pill .dot { width: 5px; height: 5px; border-radius: 50%; background-color: #eab308; flex-shrink: 0; }
         .focus-tag {
-            padding: 6px 16px;
-            background: #f8f8f8;
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: #444;
-            border-left: 2px solid #1a1a1a;
-            transition: all 0.2s;
+            padding: 5px 14px; background: #f8f8f8;
+            font-size: 9px; font-weight: 700; letter-spacing: 0.15em;
+            text-transform: uppercase; color: #555;
         }
-        .focus-tag:hover { background: #1a1a1a; color: #fff; }
 
-        /* ── AWS SECTION ── */
-        .aws-cert-card {
-            border: 1px solid #2a2a2a;
-            padding: 20px 24px;
+        /* ── SWIPER ── */
+        .swiper-wrapper { padding: 8px 0 16px; }
+
+        /* ── QA / AWS equal height columns ── */
+        .qa-aws-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: stretch;
+        }
+        .qa-aws-grid > div {
             display: flex;
-            align-items: flex-start;
-            gap: 16px;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            text-decoration: none;
+            flex-direction: column;
         }
-        .aws-cert-card::after {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            height: 2px;
-            background: #eab308;
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-        .aws-cert-card:hover { border-color: #444; }
-        .aws-cert-card:hover::after { transform: scaleX(1); }
-        .aws-cert-card .aws-icon-wrap {
-            width: 48px; height: 48px;
-            background: #111;
-            border-radius: 4px;
-            display: flex; align-items: center; justify-content: center;
-            flex-shrink: 0;
-        }
-
         @media (max-width: 768px) {
+            .qa-aws-grid { grid-template-columns: 1fr; }
             .contact-grid { grid-template-columns: 1fr; }
             .arch-image { height: 400px; margin-top: 2rem; border-radius: 200px 200px 0 0; }
         }
 
-        /* Glider overrides for books */
-        .glider-prev, .glider-next {
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 24px;
-            color: #1a1a1a;
-            background: none;
-            border: none;
-            cursor: pointer;
-            position: absolute;
+        /* ── GLIDER gap ── */
+        .glider-track { column-gap: 20px; }
+        .glider-slide { padding: 0 8px; }
+
+        /* ── ACHIEVEMENT cards ── */
+        .achieve-card {
+            border: 1px solid #f0f0f0;
+            padding: 1.5rem;
+            transition: border-color 0.3s ease;
         }
-        .glider-prev { left: -24px; }
-        .glider-next { right: -24px; }
+        .achieve-card:hover { border-color: #eab308; }
     </style>
 </head>
 <body class="overflow-x-hidden">
@@ -163,195 +99,153 @@
     </div>
 </section>
 
-<!-- QA + AWS -->
+<!-- QA + AWS — side by side -->
 <section id="qa" class="border-t border-gray-100">
+    <div class="max-w-7xl mx-auto px-8 py-20 qa-aws-grid divide-y md:divide-y-0 md:divide-x divide-gray-100">
 
-    <!-- QA row -->
-    <div class="max-w-7xl mx-auto px-8 py-24 grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-12 md:gap-24 items-start">
-
-        <!-- Left label -->
-        <div class="md:sticky md:top-32">
+        <!-- LEFT: Quality Assurance -->
+        <div class="md:pr-20 pb-16 md:pb-0">
             <p class="text-[10px] uppercase tracking-[0.3em] font-bold text-gray-400 mb-4">What I do</p>
-            <h2 class="text-5xl font-light uppercase tracking-tighter leading-tight">
+            <h2 class="text-5xl font-light uppercase tracking-tighter leading-tight mb-8">
                 Quality<br><span class="playfair italic">Assurance</span>
             </h2>
-            <div class="mt-8 w-12 h-[1px] bg-black"></div>
-            <p class="mt-6 text-[11px] text-gray-400 leading-relaxed max-w-xs">
-                Testing for edge cases, validating flows, and building reliable user-focused applications.
+            <p class="text-gray-500 text-sm leading-relaxed mb-10 max-w-md">
+                I approach software not just as a builder but as a critical thinker — testing for edge cases, validating flows, and ensuring systems behave as expected. Particularly interested in testing methodologies, system validation, and building reliable user-focused applications.
             </p>
-        </div>
 
-        <!-- Right content -->
-        <div class="space-y-12">
-
-            <!-- Description card -->
-            <div class="border border-gray-100 p-8 relative">
-                <span class="absolute -top-3 left-6 bg-white px-3 text-[9px] uppercase tracking-[0.3em] font-bold text-gray-400">Approach</span>
-                <p class="text-gray-600 text-sm leading-relaxed">
-                    I approach software not just as a builder but as a critical thinker — testing for edge cases, validating flows, and ensuring systems behave as expected. Particularly interested in testing methodologies, system validation, and building reliable user-focused applications.
-                </p>
+            <p class="text-[10px] uppercase tracking-[0.3em] font-bold text-gray-400 mb-3">Focus Areas</p>
+            <div class="flex flex-wrap gap-2 mb-10">
+                <span class="focus-tag">Manual Testing</span>
+                <span class="focus-tag">API Testing</span>
+                <span class="focus-tag">Test Case Design</span>
+                <span class="focus-tag">Bug Reporting</span>
+                <span class="focus-tag">Usability Testing</span>
+                <span class="focus-tag">Functional Testing</span>
             </div>
 
-            <!-- Focus Areas -->
-            <div>
-                <p class="text-[10px] uppercase tracking-[0.3em] font-bold text-gray-400 mb-4">Focus Areas</p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="focus-tag">Manual Testing</span>
-                    <span class="focus-tag">API Testing</span>
-                    <span class="focus-tag">Test Case Design</span>
-                    <span class="focus-tag">Bug Reporting</span>
-                    <span class="focus-tag">Usability Testing</span>
-                    <span class="focus-tag">Functional Testing</span>
-                </div>
-            </div>
-
-            <!-- Tools -->
-            <div>
-                <p class="text-[10px] uppercase tracking-[0.3em] font-bold text-gray-400 mb-4">Tools</p>
-                <div class="flex flex-wrap gap-3">
-                    <span class="qa-tool-pill"><span class="dot"></span><span class="label">Postman</span></span>
-                    <span class="qa-tool-pill"><span class="dot"></span><span class="label">Playwright</span></span>
-                    <span class="qa-tool-pill"><span class="dot"></span><span class="label">JIRA</span></span>
-                    <span class="qa-tool-pill"><span class="dot"></span><span class="label">Git</span></span>
-                    <span class="qa-tool-pill"><span class="dot"></span><span class="label">Chrome DevTools</span></span>
-                </div>
-            </div>
-
-            <!-- Stat strip -->
-            <div class="grid grid-cols-3 border border-gray-100 divide-x divide-gray-100">
-                <div class="p-6 text-center">
-                    <p class="text-3xl font-light tracking-tighter">5+</p>
-                    <p class="text-[9px] uppercase tracking-widest text-gray-400 mt-1">Projects Tested</p>
-                </div>
-                <div class="p-6 text-center">
-                    <p class="text-3xl font-light tracking-tighter">3+</p>
-                    <p class="text-[9px] uppercase tracking-widest text-gray-400 mt-1">Testing Tools</p>
-                </div>
-                <div class="p-6 text-center">
-                    <p class="text-3xl font-light tracking-tighter">100%</p>
-                    <p class="text-[9px] uppercase tracking-widest text-gray-400 mt-1">Detail Focus</p>
-                </div>
+            <p class="text-[10px] uppercase tracking-[0.3em] font-bold text-gray-400 mb-3">Tools</p>
+            <div class="flex flex-wrap gap-2">
+                <span class="qa-tool-pill"><span class="dot"></span>Postman</span>
+                <span class="qa-tool-pill"><span class="dot"></span>Playwright</span>
+                <span class="qa-tool-pill"><span class="dot"></span>JIRA</span>
+                <span class="qa-tool-pill"><span class="dot"></span>Git</span>
+                <span class="qa-tool-pill"><span class="dot"></span>Chrome DevTools</span>
             </div>
         </div>
+
+        <!-- RIGHT: AWS -->
+        <div class="md:pl-20 pt-16 md:pt-0">
+            <p class="text-[10px] uppercase tracking-[0.3em] font-bold text-gray-400 mb-4">Certifications</p>
+            <h2 class="text-5xl font-light uppercase tracking-tighter leading-tight mb-8">
+                AWS<br><span class="playfair italic">Academy</span>
+            </h2>
+            <p class="text-gray-500 text-sm leading-relaxed mb-10 max-w-md">
+                Certified in foundational cloud computing and scalable architecture design through Amazon's official training program.
+            </p>
+
+            <div class="space-y-4">
+                <a href="https://www.credly.com/badges/59d7787d-89ae-436a-a6bb-1039979d34f5/linked_in_profile"
+                   target="_blank"
+                   class="flex items-center justify-between gap-6 border border-gray-100 px-6 py-5 group hover:border-yellow-400 transition-all duration-300">
+                    <div class="flex items-center gap-4">
+                        <i class="fab fa-aws text-3xl text-gray-300 group-hover:text-yellow-500 transition"></i>
+                        <div>
+                            <p class="text-sm font-bold">Cloud Foundations</p>
+                            <p class="text-[9px] text-gray-400 uppercase tracking-widest mt-1">AWS Academy Graduate</p>
+                        </div>
+                    </div>
+                    <span class="text-[9px] uppercase tracking-widest font-bold text-yellow-500 border-b border-yellow-400 pb-0.5 opacity-0 group-hover:opacity-100 transition-all whitespace-nowrap">View on Credly ↗</span>
+                </a>
+
+                <a href="https://www.credly.com/badges/f855fa80-6c26-4db5-8da2-0b2c2ed2c7e7/linked_in_profile"
+                   target="_blank"
+                   class="flex items-center justify-between gap-6 border border-gray-100 px-6 py-5 group hover:border-yellow-400 transition-all duration-300">
+                    <div class="flex items-center gap-4">
+                        <i class="fab fa-aws text-3xl text-gray-300 group-hover:text-yellow-500 transition"></i>
+                        <div>
+                            <p class="text-sm font-bold">Cloud Architecting</p>
+                            <p class="text-[9px] text-gray-400 uppercase tracking-widest mt-1">AWS Academy Graduate</p>
+                        </div>
+                    </div>
+                    <span class="text-[9px] uppercase tracking-widest font-bold text-yellow-500 border-b border-yellow-400 pb-0.5 opacity-0 group-hover:opacity-100 transition-all whitespace-nowrap">View on Credly ↗</span>
+                </a>
+            </div>
+        </div>
+
     </div>
-
-    <!-- AWS row -->
-    <div class="bg-zinc-950 text-white">
-        <div class="max-w-7xl mx-auto px-8 py-20">
-            <div class="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-12 md:gap-24 items-start">
-
-                <!-- Left -->
-                <div>
-                    <p class="text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-500 mb-4">Certifications</p>
-                    <h2 class="text-5xl font-light uppercase tracking-tighter leading-tight">
-                        AWS<br><span class="playfair italic text-yellow-400">Academy</span>
-                    </h2>
-                    <div class="mt-6 w-12 h-[1px] bg-zinc-600"></div>
-                    <p class="mt-6 text-zinc-500 text-xs leading-relaxed max-w-xs">
-                        Certified in foundational cloud computing and scalable architecture design through Amazon's official training program.
-                    </p>
-                </div>
-
-                <!-- Right: cert cards stacked -->
-                <div class="space-y-4">
-                    <a href="https://www.credly.com/badges/59d7787d-89ae-436a-a6bb-1039979d34f5/linked_in_profile"
-                       target="_blank" class="aws-cert-card block">
-                        <div class="aws-icon-wrap">
-                            <i class="fab fa-aws text-2xl text-yellow-400"></i>
-                        </div>
-                        <div class="flex-1">
-                            <div class="flex items-start justify-between gap-4">
-                                <div>
-                                    <p class="text-[9px] uppercase tracking-[0.2em] text-zinc-500 mb-1">AWS Academy Graduate</p>
-                                    <p class="text-base font-semibold text-white">Cloud Foundations</p>
-                                    <p class="text-xs text-zinc-400 mt-1">Core cloud computing concepts, AWS infrastructure, and service fundamentals.</p>
-                                </div>
-                                <span class="text-[9px] uppercase tracking-widest text-zinc-600 hover:text-yellow-400 transition flex-shrink-0 mt-1">Credly ↗</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a href="https://www.credly.com/badges/f855fa80-6c26-4db5-8da2-0b2c2ed2c7e7/linked_in_profile"
-                       target="_blank" class="aws-cert-card block">
-                        <div class="aws-icon-wrap">
-                            <i class="fab fa-aws text-2xl text-yellow-400"></i>
-                        </div>
-                        <div class="flex-1">
-                            <div class="flex items-start justify-between gap-4">
-                                <div>
-                                    <p class="text-[9px] uppercase tracking-[0.2em] text-zinc-500 mb-1">AWS Academy Graduate</p>
-                                    <p class="text-base font-semibold text-white">Cloud Architecting</p>
-                                    <p class="text-xs text-zinc-400 mt-1">Designing scalable, resilient systems and best practices for AWS architecture.</p>
-                                </div>
-                                <span class="text-[9px] uppercase tracking-widest text-zinc-600 hover:text-yellow-400 transition flex-shrink-0 mt-1">Credly ↗</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
 </section>
 
 <!-- DEVELOPMENT -->
 <section id="development" class="py-24">
-    <div class="max-w-7xl mx-auto px-8 mb-12">
+    <div class="max-w-7xl mx-auto px-8 mb-12 flex justify-between items-end">
         <h2 class="text-3xl font-light uppercase tracking-tighter">
             Code <span class="playfair italic">Development</span>
         </h2>
-        <p class="text-[10px] uppercase tracking-[0.2em] text-gray-400 mt-2">Drag or swipe to explore</p>
+        <div class="flex gap-6">
+            <button class="dev-prev text-2xl hover:text-gray-400"><i class="fas fa-long-arrow-alt-left"></i></button>
+            <button class="dev-next text-2xl hover:text-gray-400"><i class="fas fa-long-arrow-alt-right"></i></button>
+        </div>
     </div>
-    <div class="px-8 max-w-7xl mx-auto">
-        <div class="drag-scroll" id="devScroll">
+    <div class="max-w-7xl mx-auto px-8" style="overflow:hidden"><div class="swiper devSwiper" style="overflow:visible">
+        <div class="swiper-wrapper">
 
-            <div class="drag-card card-minimal p-4">
-                <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=800" class="w-full aspect-[4/3] object-cover mb-4">
-                <span class="text-[10px] tracking-widest font-bold text-gray-300">REACT / MANUAL TESTING / FUNCTIONAL TESTING</span>
-                <h3 class="text-xl font-bold mt-2 mb-2">Homegrown Plant Selling</h3>
-                <p class="text-xs text-gray-500 leading-relaxed mb-4">Plant-selling web app tested for functionality, usability, and reliability for local Kathmandu Valley buyers. Validated cart management, minimum order logic, delivery conditions, and payment flow.</p>
-                <div class="flex gap-4">
-                    <a href="https://github.com/asthathapaa/Homegrownplant-testing" target="_blank" class="inline-block text-xs border-b border-black">View Repository</a>
-                    <a href="https://planthomegrown.netlify.app/" target="_blank" class="inline-block text-xs border-b border-gray-400 text-gray-400 hover:border-black hover:text-black transition">Live Site ↗</a>
+            <div class="swiper-slide">
+                <div class="card-minimal p-4">
+                    <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=800" class="w-full aspect-[4/3] object-cover mb-6">
+                    <span class="text-[10px] tracking-widest font-bold text-gray-300">REACT / MANUAL TESTING / FUNCTIONAL TESTING</span>
+                    <h3 class="text-xl font-bold mt-2 mb-2">Homegrown Plant Selling</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed mb-4">Plant-selling web app tested for functionality, usability, and reliability for local Kathmandu Valley buyers.</p>
+                    <div class="flex gap-4">
+                        <a href="https://github.com/asthathapaa/Homegrownplant-testing" target="_blank" class="inline-block text-xs border-b border-black">View Repository</a>
+                        <a href="https://planthomegrown.netlify.app/" target="_blank" class="inline-block text-xs border-b border-gray-400 text-gray-400 hover:border-black hover:text-black transition">Live Site ↗</a>
+                    </div>
                 </div>
             </div>
 
-            <div class="drag-card card-minimal p-4">
-                <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800" class="w-full aspect-[4/3] object-cover mb-4">
-                <span class="text-[10px] tracking-widest font-bold text-gray-300">REACT / MANUAL TESTING / BUG REPORTING</span>
-                <div class="flex items-center justify-between">
-                    <h3 class="text-xl font-bold mt-2 mb-2">Scam Aggregator</h3>
-                    <span class="text-[8px] uppercase tracking-widest font-bold bg-yellow-400 text-black px-2 py-0.5 mt-1">MBMC Ideax 2024</span>
+            <div class="swiper-slide">
+                <div class="card-minimal p-4">
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800" class="w-full aspect-[4/3] object-cover mb-6">
+                    <span class="text-[10px] tracking-widest font-bold text-gray-300">REACT / MANUAL TESTING / BUG REPORTING</span>
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-xl font-bold mt-2 mb-2">Scam Aggregator</h3>
+                        <span class="text-[8px] uppercase tracking-widest font-bold bg-yellow-400 text-black px-2 py-0.5">MBMC Ideax 2024</span>
+                    </div>
+                    <p class="text-xs text-gray-500 leading-relaxed mb-4">Platform for reporting and tracking scams. Functional and usability testing, test scenarios for input, submission, and edge cases.</p>
+                    <a href="https://github.com/asthathapaa/scam.git" target="_blank" class="inline-block text-xs border-b border-black">View Repository</a>
                 </div>
-                <p class="text-xs text-gray-500 leading-relaxed mb-4">Platform for reporting and tracking scams. Performed functional and usability testing, created test scenarios for user input, submission flow, and edge cases to improve system reliability.</p>
-                <a href="https://github.com/asthathapaa/scam.git" target="_blank" class="inline-block text-xs border-b border-black">View Repository</a>
             </div>
 
-            <div class="drag-card card-minimal p-4">
-                <img src="assets/Road-Way.png" class="w-full aspect-[4/3] object-cover mb-4">
-                <span class="text-[10px] tracking-widest font-bold text-gray-300">PYTHON / REACT / API TESTING</span>
-                <div class="flex items-center justify-between">
-                    <h3 class="text-xl font-bold mt-2 mb-2">RoadWay</h3>
-                    <span class="text-[8px] uppercase tracking-widest font-bold bg-yellow-400 text-black px-2 py-0.5 mt-1">Noskathon-Lite</span>
+            <div class="swiper-slide">
+                <div class="card-minimal p-4">
+                    <img src="assets/Road-Way.png" class="w-full aspect-[4/3] object-cover mb-6">
+                    <span class="text-[10px] tracking-widest font-bold text-gray-300">PYTHON / REACT / API TESTING</span>
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-xl font-bold mt-2 mb-2">RoadWay</h3>
+                        <span class="text-[8px] uppercase tracking-widest font-bold bg-yellow-400 text-black px-2 py-0.5">Noskathon-Lite</span>
+                    </div>
+                    <p class="text-xs text-gray-500 leading-relaxed mb-4">Traffic route optimization by Team AISLE. Frontend development and UI/functionality validation for route display and navigation.</p>
+                    <a href="https://github.com/asthathapaa/Aisle.git" target="_blank" class="inline-block text-xs border-b border-black">View Repository</a>
                 </div>
-                <p class="text-xs text-gray-500 leading-relaxed mb-4">Traffic route optimization app by Team AISLE. Assisted in frontend development and performed UI/functionality validation for route display, navigation flow, and user interaction.</p>
-                <a href="https://github.com/asthathapaa/Aisle.git" target="_blank" class="inline-block text-xs border-b border-black">View Repository</a>
             </div>
 
-            <div class="drag-card card-minimal p-4">
-                <img src="assets/Nepali_Plate.jpg" class="w-full aspect-[4/3] object-cover mb-4">
-                <span class="text-[10px] tracking-widest font-bold text-gray-300">PYTHON / YOLOV8 / CRNN / MODEL VALIDATION</span>
-                <h3 class="text-xl font-bold mt-2 mb-2">Nepali License Plate Recognition</h3>
-                <p class="text-xs text-gray-500 leading-relaxed mb-4">Automatic recognition of Nepali Devanagari license plates using YOLOv8 for detection and a custom CRNN (CNN + LSTM) OCR engine. Published at IEEE ICOIICS 2025.</p>
-                <a href="https://github.com/asthathapaa/-Nepali_License_Plate_Recognition.git" target="_blank" class="inline-block text-xs border-b border-black">View Repository</a>
+            <div class="swiper-slide">
+                <div class="card-minimal p-4">
+                    <img src="assets/Nepali_Plate.jpg" class="w-full aspect-[4/3] object-cover mb-6">
+                    <span class="text-[10px] tracking-widest font-bold text-gray-300">PYTHON / YOLOV8 / CRNN / MODEL VALIDATION</span>
+                    <h3 class="text-xl font-bold mt-2 mb-2">Nepali License Plate Recognition</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed mb-4">Recognition of Nepali Devanagari plates using YOLOv8 and a custom CRNN OCR engine. Published at IEEE ICOIICS 2025.</p>
+                    <a href="https://github.com/asthathapaa/-Nepali_License_Plate_Recognition.git" target="_blank" class="inline-block text-xs border-b border-black">View Repository</a>
+                </div>
             </div>
 
-            <div class="drag-card card-minimal p-4">
-                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800" class="w-full aspect-[4/3] object-cover mb-4">
-                <span class="text-[10px] tracking-widest font-bold text-gray-300">DOCKER / EXPRESS / REST API / POSTMAN / AWS</span>
-                <h3 class="text-xl font-bold mt-2 mb-2">CMS API</h3>
-                <p class="text-xs text-gray-500 leading-relaxed mb-4">College management system REST API built with Express and Docker. API endpoints tested and validated using Postman.</p>
-                <a href="https://github.com/asthathapaa/college-management-system.git" target="_blank" class="inline-block text-xs border-b border-black">View Repository</a>
+            <div class="swiper-slide">
+                <div class="card-minimal p-4">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800" class="w-full aspect-[4/3] object-cover mb-6">
+                    <span class="text-[10px] tracking-widest font-bold text-gray-300">DOCKER / EXPRESS / REST API / POSTMAN / AWS</span>
+                    <h3 class="text-xl font-bold mt-2 mb-2">CMS API</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed mb-4">College management system REST API built with Express and Docker. Endpoints tested and validated using Postman.</p>
+                    <a href="https://github.com/asthathapaa/college-management-system.git" target="_blank" class="inline-block text-xs border-b border-black">View Repository</a>
+                </div>
             </div>
 
         </div>
@@ -360,81 +254,69 @@
 
 <!-- DESIGN -->
 <section id="design" class="py-24 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-8 mb-12">
+    <div class="max-w-7xl mx-auto px-8 mb-12 flex justify-between items-end">
         <h2 class="text-3xl font-light uppercase tracking-tighter">
             Design <span class="playfair italic">Work</span>
         </h2>
-        <p class="text-[10px] uppercase tracking-[0.2em] text-gray-400 mt-2">Drag or swipe to explore</p>
+        <div class="flex gap-6">
+            <button class="design-prev text-2xl hover:text-gray-400"><i class="fas fa-long-arrow-alt-left"></i></button>
+            <button class="design-next text-2xl hover:text-gray-400"><i class="fas fa-long-arrow-alt-right"></i></button>
+        </div>
     </div>
+    </div></div>
+    <div class="max-w-7xl mx-auto px-8" style="overflow:hidden"><div class="swiper designSwiper" style="overflow:visible">
+        <div class="swiper-wrapper">
 
-    <div class="px-8 max-w-7xl mx-auto">
-        <div class="drag-scroll" id="designScroll">
-
-            <div class="drag-card">
+            <div class="swiper-slide">
                 <a href="https://www.figma.com/proto/yUAyJ5qFcv3V4G7ep1NJL1/TravelWebsite?node-id=0-1&t=xU0OPJzuUDtzCAJl-1"
                    target="_blank" class="card-minimal bg-white p-4 block group">
                     <img src="/assets/TravelWebsite.png" class="w-full aspect-[4/3] object-cover transition duration-700">
                     <div class="mt-4 flex items-center justify-between">
-                        <div>
-                            <h3 class="font-semibold text-sm">Travel Website</h3>
-                            <span class="text-[9px] uppercase tracking-widest text-gray-400">Figma</span>
-                        </div>
+                        <div><h3 class="font-semibold text-sm">Travel Website</h3><span class="text-[9px] uppercase tracking-widest text-gray-400">Figma</span></div>
                         <i class="fab fa-figma text-gray-300 group-hover:text-black transition"></i>
                     </div>
                 </a>
             </div>
 
-            <div class="drag-card">
+            <div class="swiper-slide">
                 <a href="https://www.figma.com/design/ywu1FfqSMcpFQRVoewy7za/404_animated_page?node-id=0-1&t=stUPbvC2JTCfQyTa-1"
                    target="_blank" class="card-minimal bg-white p-4 block group">
                     <img src="/assets/404 page.png" class="w-full aspect-[4/3] object-cover transition duration-700">
                     <div class="mt-4 flex items-center justify-between">
-                        <div>
-                            <h3 class="font-semibold text-sm">Animated 404 Page</h3>
-                            <span class="text-[9px] uppercase tracking-widest text-gray-400">Figma</span>
-                        </div>
+                        <div><h3 class="font-semibold text-sm">Animated 404 Page</h3><span class="text-[9px] uppercase tracking-widest text-gray-400">Figma</span></div>
                         <i class="fab fa-figma text-gray-300 group-hover:text-black transition"></i>
                     </div>
                 </a>
             </div>
 
-            <div class="drag-card">
+            <div class="swiper-slide">
                 <a href="https://www.figma.com/design/rX2RPPiOL0mUjZxCu606c2/RealState_design?node-id=1-7&t=ytP9Kx3TCm6JEUdz-1"
                    target="_blank" class="card-minimal bg-white p-4 block group">
                     <img src="/assets/Add Property_ Basic.png" class="w-full aspect-[4/3] object-cover transition duration-700">
                     <div class="mt-4 flex items-center justify-between">
-                        <div>
-                            <h3 class="font-semibold text-sm">Real Estate Admin Panel</h3>
-                            <span class="text-[9px] uppercase tracking-widest text-gray-400">Figma</span>
-                        </div>
+                        <div><h3 class="font-semibold text-sm">Real Estate Admin Panel</h3><span class="text-[9px] uppercase tracking-widest text-gray-400">Figma</span></div>
                         <i class="fab fa-figma text-gray-300 group-hover:text-black transition"></i>
                     </div>
                 </a>
             </div>
 
-            <div class="drag-card">
-                <a href="https://www.canva.com/design/DAG9v0TrgAw/awCxXfnFGsfgc6H3FJ8eBA/edit?utm_content=DAG9v0TrgAw&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
+            <div class="swiper-slide">
+                <a href="https://www.canva.com/design/DAG9v0TrgAw/awCxXfnFGsfgc6H3FJ8eBA/edit"
                    target="_blank" class="card-minimal bg-white p-4 block group">
                     <img src="assets/Social Media Design.png" class="w-full aspect-[4/3] object-cover transition duration-700">
                     <div class="mt-4 flex items-center justify-between">
-                        <div>
-                            <h3 class="font-semibold text-sm">Social Media Design</h3>
-                            <span class="text-[9px] uppercase tracking-widest text-gray-400">Canva</span>
-                        </div>
+                        <div><h3 class="font-semibold text-sm">Social Media Design</h3><span class="text-[9px] uppercase tracking-widest text-gray-400">Canva</span></div>
                         <span class="text-gray-300 group-hover:text-black transition text-sm">↗</span>
                     </div>
                 </a>
             </div>
 
-            <div class="drag-card">
-                <a href="https://www.canva.com/design/DAG8-sl3OBE/l__-BBUDsULb6j1cxYOtEw/edit?utm_content=DAG8-sl3OBE&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
+            <div class="swiper-slide">
+                <a href="https://www.canva.com/design/DAG8-sl3OBE/l__-BBUDsULb6j1cxYOtEw/edit"
                    target="_blank" class="card-minimal bg-white p-4 block group">
                     <img src="assets/SAIRA.png" class="w-full aspect-[4/3] object-cover transition duration-700">
                     <div class="mt-4 flex items-center justify-between">
-                        <div>
-                            <h3 class="font-semibold text-sm">Wedding Poster</h3>
-                            <span class="text-[9px] uppercase tracking-widest text-gray-400">Canva</span>
-                        </div>
+                        <div><h3 class="font-semibold text-sm">Wedding Poster</h3><span class="text-[9px] uppercase tracking-widest text-gray-400">Canva</span></div>
                         <span class="text-gray-300 group-hover:text-black transition text-sm">↗</span>
                     </div>
                 </a>
@@ -444,34 +326,39 @@
     </div>
 </section>
 
-<!-- ACHIEVEMENTS STRIP -->
-<section class="bg-gray-50 border-t border-gray-100 py-12">
+<!-- ACHIEVEMENTS -->
+<section class="border-t border-gray-100 py-16">
     <div class="max-w-7xl mx-auto px-8">
         <p class="text-[10px] uppercase tracking-[0.3em] font-bold text-gray-400 mb-8">Scholarships & Achievements</p>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-            <div class="border-l-2 border-yellow-400 pl-4">
-                <p class="text-xs font-bold text-black leading-tight">Semester Topper</p>
-                <p class="text-[10px] text-gray-500 mt-1">GPA 4.0 — 6th Semester (VI)</p>
-                <p class="text-[9px] text-gray-400 mt-1 uppercase tracking-widest">Pokhara University</p>
+            <!-- Scholarship card -->
+            <div class="achieve-card">
+                <p class="text-[9px] uppercase tracking-[0.2em] font-bold text-yellow-500 mb-3">Scholarship</p>
+                <h3 class="text-lg font-bold mb-1">Bachelor's Merit Scholarship</h3>
+                <p class="text-sm text-gray-500 mb-4">Pokhara University · 2022 – Present</p>
+                <p class="text-xs text-gray-400 leading-relaxed">Awarded in recognition of consistent academic excellence and outstanding performance. Topper in 5th & 6th Semester · $1000</p>
             </div>
 
-            <div class="border-l-2 border-yellow-400 pl-4">
-                <p class="text-xs font-bold text-black leading-tight">Bachelor's Merit Scholarship</p>
-                <p class="text-[10px] text-gray-500 mt-1">$1000 · Topper 5th & 6th Sem</p>
-                <p class="text-[9px] text-gray-400 mt-1 uppercase tracking-widest">2022 – Present</p>
-            </div>
-
-            <div class="border-l-2 border-yellow-400 pl-4">
-                <p class="text-xs font-bold text-black leading-tight">Bachelor's GPA</p>
-                <div class="flex gap-3 flex-wrap mt-1">
-                    <span class="text-[10px] text-gray-500">Sem IV · 3.82</span>
-                    <span class="text-[10px] text-gray-400">·</span>
-                    <span class="text-[10px] text-gray-500">Sem V · 3.95</span>
-                    <span class="text-[10px] text-gray-400">·</span>
-                    <span class="text-[10px] text-gray-500">Sem VI · 4.0</span>
+            <!-- GPA card -->
+            <div class="achieve-card">
+                <p class="text-[9px] uppercase tracking-[0.2em] font-bold text-yellow-500 mb-3">Academic Record</p>
+                <h3 class="text-lg font-bold mb-4">Bachelor's GPA</h3>
+                <div class="grid grid-cols-3 gap-4">
+                    <div>
+                        <p class="text-[9px] text-gray-400 uppercase tracking-widest mb-1">Semester IV</p>
+                        <p class="text-3xl font-light tracking-tighter">3.82</p>
+                    </div>
+                    <div>
+                        <p class="text-[9px] text-gray-400 uppercase tracking-widest mb-1">Semester V</p>
+                        <p class="text-3xl font-light tracking-tighter">3.95</p>
+                    </div>
+                    <div>
+                        <p class="text-[9px] text-gray-400 uppercase tracking-widest mb-1">Semester VI</p>
+                        <p class="text-3xl font-light tracking-tighter">4.00</p>
+                        <p class="text-[8px] uppercase tracking-widest text-yellow-500 font-bold mt-1">Topper</p>
+                    </div>
                 </div>
-                <p class="text-[9px] text-gray-400 mt-1 uppercase tracking-widest">Pokhara University</p>
             </div>
 
         </div>
@@ -479,7 +366,7 @@
 </section>
 
 <!-- BOOKS -->
-<hr class="my-12 border-gray-200">
+<hr class="border-gray-100">
 <section id="books" class="py-12">
     <div class="max-w-7xl mx-auto px-8 mb-12">
         <h2 class="text-3xl font-light uppercase tracking-tighter">
@@ -528,10 +415,7 @@
                 <div class="w-full h-[374px] flex items-center justify-center mb-4">
                     <img src="assets/b7.png" class="max-h-full max-w-full object-contain rounded">
                 </div>
-                <h3 class="mt-1">
-                    <span class="text-lg font-bold text-black">Ahalya</span><br>
-                    <span class="text-sm font-normal text-black">Sati Series #1</span>
-                </h3>
+                <h3 class="mt-1"><span class="text-lg font-bold text-black">Ahalya</span><br><span class="text-sm font-normal text-black">Sati Series #1</span></h3>
                 <p class="text-[9px] text-gray-500 mt-1">by Koral Dasgupta</p>
                 <a href="https://www.goodreads.com/en/book/show/55067201-ahalya" target="_blank" class="inline-block mt-2 text-xs border-b border-black">View on Goodreads</a>
             </div>
@@ -590,28 +474,26 @@
 </footer>
 
 <script>
-    /* ── Drag-to-scroll for dev & design carousels ── */
-    function makeDraggable(el) {
-        let isDown = false, startX, scrollLeft;
-        el.addEventListener('mousedown', e => {
-            isDown = true;
-            el.classList.add('active');
-            startX = e.pageX - el.offsetLeft;
-            scrollLeft = el.scrollLeft;
-        });
-        el.addEventListener('mouseleave', () => { isDown = false; });
-        el.addEventListener('mouseup', () => { isDown = false; });
-        el.addEventListener('mousemove', e => {
-            if (!isDown) return;
-            e.preventDefault();
-            const x = e.pageX - el.offsetLeft;
-            el.scrollLeft = scrollLeft - (x - startX) * 1.5;
-        });
-    }
-    makeDraggable(document.getElementById('devScroll'));
-    makeDraggable(document.getElementById('designScroll'));
-
-    /* ── Glider for books ── */
+    new Swiper(".devSwiper", {
+        slidesPerView: 3,
+        spaceBetween: 30,
+        navigation: { nextEl: ".dev-next", prevEl: ".dev-prev" },
+        breakpoints: {
+            320: { slidesPerView: 1, spaceBetween: 20 },
+            768: { slidesPerView: 2, spaceBetween: 30 },
+            1024: { slidesPerView: 3, spaceBetween: 30 },
+        },
+    });
+    new Swiper(".designSwiper", {
+        slidesPerView: 3,
+        spaceBetween: 30,
+        navigation: { nextEl: ".design-next", prevEl: ".design-prev" },
+        breakpoints: {
+            320: { slidesPerView: 1, spaceBetween: 20 },
+            768: { slidesPerView: 2, spaceBetween: 30 },
+            1024: { slidesPerView: 3, spaceBetween: 30 },
+        },
+    });
     new Glider(document.querySelector('.glider'), {
         slidesToShow: 4,
         slidesToScroll: 1,
