@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astha Thapa | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.js"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #1a1a1a; scroll-behavior: smooth; }
+        .playfair { font-family: 'Playfair Display', serif; }
+        .arch-image { width: 100%; height: 480px; object-fit: cover; border-radius: 500px 500px 0 0; filter: grayscale(100%); transition: all 0.5s ease; }
+        .arch-image:hover { transform: translateY(-10px); }
+        .card-minimal { border: 1px solid #f0f0f0; transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1); }
+        .card-minimal:hover { border-color: #000; transform: translateY(-5px); }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; border-top: 1px solid #000; }
+
+        /* ── DRAG-SCROLL CAROUSEL ── */
+        .drag-scroll {
+            display: flex;
+            gap: 24px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            cursor: grab;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 12px;
+        }
+        .drag-scroll:active { cursor: grabbing; }
+        .drag-scroll::-webkit-scrollbar { height: 3px; }
+        .drag-scroll::-webkit-scrollbar-track { background: #f0f0f0; }
+        .drag-scroll::-webkit-scrollbar-thumb { background: #000; border-radius: 2px; }
+        .drag-scroll .drag-card {
+            flex: 0 0 calc(33.33% - 16px);
+            scroll-snap-align: start;
+            min-width: 280px;
+        }
+        @media (max-width: 1024px) { .drag-scroll .drag-card { flex: 0 0 calc(50% - 12px); } }
+        @media (max-width: 640px) { .drag-scroll .drag-card { flex: 0 0 85%; } }
+
+        /* ── QA SECTION ── */
+        .qa-tool-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            border: 1px solid #e5e5e5;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            transition: all 0.25s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .qa-tool-pill::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: #1a1a1a;
+            transform: translateX(-100%);
+            transition: transform 0.25s ease;
+            z-index: 0;
+        }
+        .qa-tool-pill:hover::before { transform: translateX(0); }
+        .qa-tool-pill:hover { color: #fff; border-color: #1a1a1a; }
+        .qa-tool-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: #eab308; flex-shrink: 0; position: relative; z-index: 1; }
+        .qa-tool-pill span.label { position: relative; z-index: 1; }
+
+        .focus-tag {
+            padding: 6px 16px;
+            background: #f8f8f8;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #444;
+            border-left: 2px solid #1a1a1a;
+            transition: all 0.2s;
+        }
+        .focus-tag:hover { background: #1a1a1a; color: #fff; }
+
+        /* ── AWS SECTION ── */
+        .aws-cert-card {
+            border: 1px solid #2a2a2a;
+            padding: 20px 24px;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        .aws-cert-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 2px;
+            background: #eab308;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        .aws-cert-card:hover { border-color: #444; }
+        .aws-cert-card:hover::after { transform: scaleX(1); }
+        .aws-cert-card .aws-icon-wrap {
+            width: 48px; height: 48px;
+            background: #111;
+            border-radius: 4px;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 768px) {
+            .contact-grid { grid-template-columns: 1fr; }
+            .arch-image { height: 400px; margin-top: 2rem; border-radius: 200px 200px 0 0; }
+        }
+
+        /* Glider overrides for books */
+        .glider-prev, .glider-next {
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            color: #1a1a1a;
+            background: none;
+            border: none;
+            cursor: pointer;
+            position: absolute;
+        }
+        .glider-prev { left: -24px; }
+        .glider-next { right: -24px; }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+<!-- NAV -->
+<nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-sm border-b border-gray-50">
+    <div class="max-w-7xl mx-auto px-8 py-6 flex justify-between items-center">
+        <a href="#" class="text-xl font-bold tracking-tighter uppercase">Astha.</a>
+        <div class="hidden md:flex space-x-12 text-[10px] uppercase tracking-[0.3em] font-bold">
+            <a href="#development" class="hover:text-gray-400 transition">Develop</a>
+            <a href="#design" class="hover:text-gray-400 transition">Design</a>
+            <a href="#contact" class="hover:text-gray-400 transition">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="pt-48 pb-32 px-8 max-w-7xl mx-auto">
+    <div class="flex flex-col md:flex-row items-center gap-16">
+        <div class="w-full md:w-2/3">
+            <h1 class="text-2xl md:text-2xl lg:text-9xl font-light tracking-tighter mb-8 leading-tight">
+                Design <br> Develop <span class="playfair italic">&</span> Test.
+            </h1>
+            <p class="text-[11px] uppercase tracking-[0.3em] text-gray-400 font-bold">Software Engineering · Quality Assurance · Research</p>
+        </div>
+        <div class="w-full md:w-1/3">
+            <img src="/assets/Image_Astha.png" alt="Astha Thapa" class="arch-image">
+        </div>
+    </div>
+</section>
+
+<!-- QA + AWS -->
+<section id="qa" class="border-t border-gray-100">
+
+    <!-- QA row -->
+    <div class="max-w-7xl mx-auto px-8 py-24 grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-12 md:gap-24 items-start">
+
+        <!-- Left label -->
+        <div class="md:sticky md:top-32">
+            <p class="text-[10px] uppercase tracking-[0.3em] font-bold text-gray-400 mb-4">What I do</p>
+            <h2 class="text-5xl font-light uppercase tracking-tighter leading-tight">
+                Quality<br><span class="playfair italic">Assurance</span>
+            </h2>
+            <div class="mt-8 w-12 h-[1px] bg-black"></div>
+            <p class="mt-6 text-[11px] text-gray-400 leading-relaxed max-w-xs">
+                Testing for edge cases, validating flows, and building reliable user-focused applications.
+            </p>
+        </div>
+
+        <!-- Right content -->
+        <div class="space-y-12">
+
+            <!-- Description card -->
+            <div class="border border-gray-100 p-8 relative">
+                <span class="absolute -top-3 left-6 bg-white px-3 text-[9px] uppercase tracking-[0.3em] font-bold text-gray-400">Approach</span>
+                <p class="text-gray-600 text-sm leading-relaxed">
+                    I approach software not just as a builder but as a critical thinker — testing for edge cases, validating flows, and ensuring systems behave as expected. Particularly interested in testing methodologies, system validation, and building reliable user-focused applications.
+                </p>
+            </div>
+
+            <!-- Focus Areas -->
+            <div>
+                <p class="text-[10px] uppercase tracking-[0.3em] font-bold text-gray-400 mb-4">Focus Areas</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="focus-tag">Manual Testing</span>
+                    <span class="focus-tag">API Testing</span>
+                    <span class="focus-tag">Test Case Design</span>
+                    <span class="focus-tag">Bug Reporting</span>
+                    <span class="focus-tag">Usability Testing</span>
+                    <span class="focus-tag">Functional Testing</span>
+                </div>
+            </div>
+
+            <!-- Tools -->
+            <div>
+                <p class="text-[10px] uppercase tracking-[0.3em] font-bold text-gray-400 mb-4">Tools</p>
+                <div class="flex flex-wrap gap-3">
+                    <span class="qa-tool-pill"><span class="dot"></span><span class="label">Postman</span></span>
+                    <span class="qa-tool-pill"><span class="dot"></span><span class="label">Playwright</span></span>
+                    <span class="qa-tool-pill"><span class="dot"></span><span class="label">JIRA</span></span>
+                    <span class="qa-tool-pill"><span class="dot"></span><span class="label">Git</span></span>
+                    <span class="qa-tool-pill"><span class="dot"></span><span class="label">Chrome DevTools</span></span>
+                </div>
+            </div>
+
+            <!-- Stat strip -->
+            <div class="grid grid-cols-3 border border-gray-100 divide-x divide-gray-100">
+                <div class="p-6 text-center">
+                    <p class="text-3xl font-light tracking-tighter">5+</p>
+                    <p class="text-[9px] uppercase tracking-widest text-gray-400 mt-1">Projects Tested</p>
+                </div>
+                <div class="p-6 text-center">
+                    <p class="text-3xl font-light tracking-tighter">3+</p>
+                    <p class="text-[9px] uppercase tracking-widest text-gray-400 mt-1">Testing Tools</p>
+                </div>
+                <div class="p-6 text-center">
+                    <p class="text-3xl font-light tracking-tighter">100%</p>
+                    <p class="text-[9px] uppercase tracking-widest text-gray-400 mt-1">Detail Focus</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AWS row -->
+    <div class="bg-zinc-950 text-white">
+        <div class="max-w-7xl mx-auto px-8 py-20">
+            <div class="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-12 md:gap-24 items-start">
+
+                <!-- Left -->
+                <div>
+                    <p class="text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-500 mb-4">Certifications</p>
+                    <h2 class="text-5xl font-light uppercase tracking-tighter leading-tight">
+                        AWS<br><span class="playfair italic text-yellow-400">Academy</span>
+                    </h2>
+                    <div class="mt-6 w-12 h-[1px] bg-zinc-600"></div>
+                    <p class="mt-6 text-zinc-500 text-xs leading-relaxed max-w-xs">
+                        Certified in foundational cloud computing and scalable architecture design through Amazon's official training program.
+                    </p>
+                </div>
+
+                <!-- Right: cert cards stacked -->
+                <div class="space-y-4">
+                    <a href="https://www.credly.com/badges/59d7787d-89ae-436a-a6bb-1039979d34f5/linked_in_profile"
+                       target="_blank" class="aws-cert-card block">
+                        <div class="aws-icon-wrap">
+                            <i class="fab fa-aws text-2xl text-yellow-400"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-start justify-between gap-4">
+                                <div>
+                                    <p class="text-[9px] uppercase tracking-[0.2em] text-zinc-500 mb-1">AWS Academy Graduate</p>
+                                    <p class="text-base font-semibold text-white">Cloud Foundations</p>
+                                    <p class="text-xs text-zinc-400 mt-1">Core cloud computing concepts, AWS infrastructure, and service fundamentals.</p>
+                                </div>
+                                <span class="text-[9px] uppercase tracking-widest text-zinc-600 hover:text-yellow-400 transition flex-shrink-0 mt-1">Credly ↗</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="https://www.credly.com/badges/f855fa80-6c26-4db5-8da2-0b2c2ed2c7e7/linked_in_profile"
+                       target="_blank" class="aws-cert-card block">
+                        <div class="aws-icon-wrap">
+                            <i class="fab fa-aws text-2xl text-yellow-400"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-start justify-between gap-4">
+                                <div>
+                                    <p class="text-[9px] uppercase tracking-[0.2em] text-zinc-500 mb-1">AWS Academy Graduate</p>
+                                    <p class="text-base font-semibold text-white">Cloud Architecting</p>
+                                    <p class="text-xs text-zinc-400 mt-1">Designing scalable, resilient systems and best practices for AWS architecture.</p>
+                                </div>
+                                <span class="text-[9px] uppercase tracking-widest text-zinc-600 hover:text-yellow-400 transition flex-shrink-0 mt-1">Credly ↗</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!-- DEVELOPMENT -->
+<section id="development" class="py-24">
+    <div class="max-w-7xl mx-auto px-8 mb-12">
+        <h2 class="text-3xl font-light uppercase tracking-tighter">
+            Code <span class="playfair italic">Development</span>
+        </h2>
+        <p class="text-[10px] uppercase tracking-[0.2em] text-gray-400 mt-2">Drag or swipe to explore</p>
+    </div>
+    <div class="px-8 max-w-7xl mx-auto">
+        <div class="drag-scroll" id="devScroll">
+
+            <div class="drag-card card-minimal p-4">
+                <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=800" class="w-full aspect-[4/3] object-cover mb-4">
+                <span class="text-[10px] tracking-widest font-bold text-gray-300">REACT / MANUAL TESTING / FUNCTIONAL TESTING</span>
+                <h3 class="text-xl font-bold mt-2 mb-2">Homegrown Plant Selling</h3>
+                <p class="text-xs text-gray-500 leading-relaxed mb-4">Plant-selling web app tested for functionality, usability, and reliability for local Kathmandu Valley buyers. Validated cart management, minimum order logic, delivery conditions, and payment flow.</p>
+                <div class="flex gap-4">
+                    <a href="https://github.com/asthathapaa/Homegrownplant-testing" target="_blank" class="inline-block text-xs border-b border-black">View Repository</a>
+                    <a href="https://planthomegrown.netlify.app/" target="_blank" class="inline-block text-xs border-b border-gray-400 text-gray-400 hover:border-black hover:text-black transition">Live Site ↗</a>
+                </div>
+            </div>
+
+            <div class="drag-card card-minimal p-4">
+                <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800" class="w-full aspect-[4/3] object-cover mb-4">
+                <span class="text-[10px] tracking-widest font-bold text-gray-300">REACT / MANUAL TESTING / BUG REPORTING</span>
+                <div class="flex items-center justify-between">
+                    <h3 class="text-xl font-bold mt-2 mb-2">Scam Aggregator</h3>
+                    <span class="text-[8px] uppercase tracking-widest font-bold bg-yellow-400 text-black px-2 py-0.5 mt-1">MBMC Ideax 2024</span>
+                </div>
+                <p class="text-xs text-gray-500 leading-relaxed mb-4">Platform for reporting and tracking scams. Performed functional and usability testing, created test scenarios for user input, submission flow, and edge cases to improve system reliability.</p>
+                <a href="https://github.com/asthathapaa/scam.git" target="_blank" class="inline-block text-xs border-b border-black">View Repository</a>
+            </div>
+
+            <div class="drag-card card-minimal p-4">
+                <img src="assets/Road-Way.png" class="w-full aspect-[4/3] object-cover mb-4">
+                <span class="text-[10px] tracking-widest font-bold text-gray-300">PYTHON / REACT / API TESTING</span>
+                <div class="flex items-center justify-between">
+                    <h3 class="text-xl font-bold mt-2 mb-2">RoadWay</h3>
+                    <span class="text-[8px] uppercase tracking-widest font-bold bg-yellow-400 text-black px-2 py-0.5 mt-1">Noskathon-Lite</span>
+                </div>
+                <p class="text-xs text-gray-500 leading-relaxed mb-4">Traffic route optimization app by Team AISLE. Assisted in frontend development and performed UI/functionality validation for route display, navigation flow, and user interaction.</p>
+                <a href="https://github.com/asthathapaa/Aisle.git" target="_blank" class="inline-block text-xs border-b border-black">View Repository</a>
+            </div>
+
+            <div class="drag-card card-minimal p-4">
+                <img src="assets/Nepali_Plate.jpg" class="w-full aspect-[4/3] object-cover mb-4">
+                <span class="text-[10px] tracking-widest font-bold text-gray-300">PYTHON / YOLOV8 / CRNN / MODEL VALIDATION</span>
+                <h3 class="text-xl font-bold mt-2 mb-2">Nepali License Plate Recognition</h3>
+                <p class="text-xs text-gray-500 leading-relaxed mb-4">Automatic recognition of Nepali Devanagari license plates using YOLOv8 for detection and a custom CRNN (CNN + LSTM) OCR engine. Published at IEEE ICOIICS 2025.</p>
+                <a href="https://github.com/asthathapaa/-Nepali_License_Plate_Recognition.git" target="_blank" class="inline-block text-xs border-b border-black">View Repository</a>
+            </div>
+
+            <div class="drag-card card-minimal p-4">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800" class="w-full aspect-[4/3] object-cover mb-4">
+                <span class="text-[10px] tracking-widest font-bold text-gray-300">DOCKER / EXPRESS / REST API / POSTMAN / AWS</span>
+                <h3 class="text-xl font-bold mt-2 mb-2">CMS API</h3>
+                <p class="text-xs text-gray-500 leading-relaxed mb-4">College management system REST API built with Express and Docker. API endpoints tested and validated using Postman.</p>
+                <a href="https://github.com/asthathapaa/college-management-system.git" target="_blank" class="inline-block text-xs border-b border-black">View Repository</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- DESIGN -->
+<section id="design" class="py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-8 mb-12">
+        <h2 class="text-3xl font-light uppercase tracking-tighter">
+            Design <span class="playfair italic">Work</span>
+        </h2>
+        <p class="text-[10px] uppercase tracking-[0.2em] text-gray-400 mt-2">Drag or swipe to explore</p>
+    </div>
+
+    <div class="px-8 max-w-7xl mx-auto">
+        <div class="drag-scroll" id="designScroll">
+
+            <div class="drag-card">
+                <a href="https://www.figma.com/proto/yUAyJ5qFcv3V4G7ep1NJL1/TravelWebsite?node-id=0-1&t=xU0OPJzuUDtzCAJl-1"
+                   target="_blank" class="card-minimal bg-white p-4 block group">
+                    <img src="/assets/TravelWebsite.png" class="w-full aspect-[4/3] object-cover transition duration-700">
+                    <div class="mt-4 flex items-center justify-between">
+                        <div>
+                            <h3 class="font-semibold text-sm">Travel Website</h3>
+                            <span class="text-[9px] uppercase tracking-widest text-gray-400">Figma</span>
+                        </div>
+                        <i class="fab fa-figma text-gray-300 group-hover:text-black transition"></i>
+                    </div>
+                </a>
+            </div>
+
+            <div class="drag-card">
+                <a href="https://www.figma.com/design/ywu1FfqSMcpFQRVoewy7za/404_animated_page?node-id=0-1&t=stUPbvC2JTCfQyTa-1"
+                   target="_blank" class="card-minimal bg-white p-4 block group">
+                    <img src="/assets/404 page.png" class="w-full aspect-[4/3] object-cover transition duration-700">
+                    <div class="mt-4 flex items-center justify-between">
+                        <div>
+                            <h3 class="font-semibold text-sm">Animated 404 Page</h3>
+                            <span class="text-[9px] uppercase tracking-widest text-gray-400">Figma</span>
+                        </div>
+                        <i class="fab fa-figma text-gray-300 group-hover:text-black transition"></i>
+                    </div>
+                </a>
+            </div>
+
+            <div class="drag-card">
+                <a href="https://www.figma.com/design/rX2RPPiOL0mUjZxCu606c2/RealState_design?node-id=1-7&t=ytP9Kx3TCm6JEUdz-1"
+                   target="_blank" class="card-minimal bg-white p-4 block group">
+                    <img src="/assets/Add Property_ Basic.png" class="w-full aspect-[4/3] object-cover transition duration-700">
+                    <div class="mt-4 flex items-center justify-between">
+                        <div>
+                            <h3 class="font-semibold text-sm">Real Estate Admin Panel</h3>
+                            <span class="text-[9px] uppercase tracking-widest text-gray-400">Figma</span>
+                        </div>
+                        <i class="fab fa-figma text-gray-300 group-hover:text-black transition"></i>
+                    </div>
+                </a>
+            </div>
+
+            <div class="drag-card">
+                <a href="https://www.canva.com/design/DAG9v0TrgAw/awCxXfnFGsfgc6H3FJ8eBA/edit?utm_content=DAG9v0TrgAw&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
+                   target="_blank" class="card-minimal bg-white p-4 block group">
+                    <img src="assets/Social Media Design.png" class="w-full aspect-[4/3] object-cover transition duration-700">
+                    <div class="mt-4 flex items-center justify-between">
+                        <div>
+                            <h3 class="font-semibold text-sm">Social Media Design</h3>
+                            <span class="text-[9px] uppercase tracking-widest text-gray-400">Canva</span>
+                        </div>
+                        <span class="text-gray-300 group-hover:text-black transition text-sm">↗</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="drag-card">
+                <a href="https://www.canva.com/design/DAG8-sl3OBE/l__-BBUDsULb6j1cxYOtEw/edit?utm_content=DAG8-sl3OBE&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
+                   target="_blank" class="card-minimal bg-white p-4 block group">
+                    <img src="assets/SAIRA.png" class="w-full aspect-[4/3] object-cover transition duration-700">
+                    <div class="mt-4 flex items-center justify-between">
+                        <div>
+                            <h3 class="font-semibold text-sm">Wedding Poster</h3>
+                            <span class="text-[9px] uppercase tracking-widest text-gray-400">Canva</span>
+                        </div>
+                        <span class="text-gray-300 group-hover:text-black transition text-sm">↗</span>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ACHIEVEMENTS STRIP -->
+<section class="bg-gray-50 border-t border-gray-100 py-12">
+    <div class="max-w-7xl mx-auto px-8">
+        <p class="text-[10px] uppercase tracking-[0.3em] font-bold text-gray-400 mb-8">Scholarships & Achievements</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+            <div class="border-l-2 border-yellow-400 pl-4">
+                <p class="text-xs font-bold text-black leading-tight">Semester Topper</p>
+                <p class="text-[10px] text-gray-500 mt-1">GPA 4.0 — 6th Semester (VI)</p>
+                <p class="text-[9px] text-gray-400 mt-1 uppercase tracking-widest">Pokhara University</p>
+            </div>
+
+            <div class="border-l-2 border-yellow-400 pl-4">
+                <p class="text-xs font-bold text-black leading-tight">Bachelor's Merit Scholarship</p>
+                <p class="text-[10px] text-gray-500 mt-1">$1000 · Topper 5th & 6th Sem</p>
+                <p class="text-[9px] text-gray-400 mt-1 uppercase tracking-widest">2022 – Present</p>
+            </div>
+
+            <div class="border-l-2 border-yellow-400 pl-4">
+                <p class="text-xs font-bold text-black leading-tight">Bachelor's GPA</p>
+                <div class="flex gap-3 flex-wrap mt-1">
+                    <span class="text-[10px] text-gray-500">Sem IV · 3.82</span>
+                    <span class="text-[10px] text-gray-400">·</span>
+                    <span class="text-[10px] text-gray-500">Sem V · 3.95</span>
+                    <span class="text-[10px] text-gray-400">·</span>
+                    <span class="text-[10px] text-gray-500">Sem VI · 4.0</span>
+                </div>
+                <p class="text-[9px] text-gray-400 mt-1 uppercase tracking-widest">Pokhara University</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- BOOKS -->
+<hr class="my-12 border-gray-200">
+<section id="books" class="py-12">
+    <div class="max-w-7xl mx-auto px-8 mb-12">
+        <h2 class="text-3xl font-light uppercase tracking-tighter">
+            Books <span class="playfair italic">I've Read</span>
+        </h2>
+    </div>
+    <div class="glider-contain max-w-7xl mx-auto px-8">
+        <div class="glider">
+            <div class="card-minimal p-4 w-48">
+                <img src="assets/b1.png" class="w-full h-82 object-cover mb-4 rounded">
+                <h3 class="text-lg font-bold mt-1">The Palace of Illusions</h3>
+                <p class="text-[9px] text-gray-500 mt-1">by Chitra Banerjee Divakaruni</p>
+                <a href="https://www.goodreads.com/en/book/show/1774836.The_Palace_of_Illusions" target="_blank" class="inline-block mt-2 text-xs border-b border-black">View on Goodreads</a>
+            </div>
+            <div class="card-minimal p-4 w-48">
+                <img src="assets/b2.png" class="w-full h-82 object-cover mb-4 rounded">
+                <h3 class="text-lg font-bold mt-1">A Thousand Splendid Suns</h3>
+                <p class="text-[9px] text-gray-500 mt-1">by Khaled Hosseini</p>
+                <a href="https://www.goodreads.com/book/show/834713.A_Thousand_Splendid_Suns" target="_blank" class="inline-block mt-2 text-xs border-b border-black">View on Goodreads</a>
+            </div>
+            <div class="card-minimal p-4 w-48">
+                <img src="assets/b33.png" class="w-full h-82 object-cover mb-4 rounded">
+                <h3 class="text-lg font-bold mt-1">Animal Farm</h3>
+                <p class="text-[9px] text-gray-500 mt-1">by George Orwell</p>
+                <a href="https://www.goodreads.com/book/show/3149348-animal-farm" target="_blank" class="inline-block mt-2 text-xs border-b border-black">View on Goodreads</a>
+            </div>
+            <div class="card-minimal p-4 w-48">
+                <img src="assets/b4.png" class="w-full h-82 object-cover mb-4 rounded">
+                <h3 class="text-lg font-bold mt-1">The Forest of Enchantments</h3>
+                <p class="text-[9px] text-gray-500 mt-1">by Chitra Banerjee Divakaruni</p>
+                <a href="https://www.goodreads.com/book/show/48548090-the-forest-of-enchantments" target="_blank" class="inline-block mt-2 text-xs border-b border-black">View on Goodreads</a>
+            </div>
+            <div class="card-minimal p-4 w-48">
+                <img src="assets/b5.png" class="w-full h-1000 object-cover mb-4 rounded">
+                <h3 class="text-lg font-bold mt-1">Jaya: An Illustrated Retelling of the Mahabharata</h3>
+                <p class="text-[9px] text-gray-500 mt-1">by Devdutt Pattanaik</p>
+                <a href="https://www.goodreads.com/book/show/19199728-jaya" target="_blank" class="inline-block mt-2 text-xs border-b border-black">View on Goodreads</a>
+            </div>
+            <div class="card-minimal p-4 w-48">
+                <img src="assets/b6.png" class="w-full h-89 object-cover mb-4 rounded">
+                <h3 class="text-lg font-bold mt-1">Mahagatha: 100 Tales from the Puranas</h3>
+                <p class="text-[9px] text-gray-500 mt-1">by Satyarth Nayak</p>
+                <a href="https://www.goodreads.com/book/show/63922107-mahagatha" target="_blank" class="inline-block mt-2 text-xs border-b border-black">View on Goodreads</a>
+            </div>
+            <div class="card-minimal p-4 w-48">
+                <div class="w-full h-[374px] flex items-center justify-center mb-4">
+                    <img src="assets/b7.png" class="max-h-full max-w-full object-contain rounded">
+                </div>
+                <h3 class="mt-1">
+                    <span class="text-lg font-bold text-black">Ahalya</span><br>
+                    <span class="text-sm font-normal text-black">Sati Series #1</span>
+                </h3>
+                <p class="text-[9px] text-gray-500 mt-1">by Koral Dasgupta</p>
+                <a href="https://www.goodreads.com/en/book/show/55067201-ahalya" target="_blank" class="inline-block mt-2 text-xs border-b border-black">View on Goodreads</a>
+            </div>
+        </div>
+        <button class="glider-prev">«</button>
+        <button class="glider-next">»</button>
+        <div role="tablist" class="dots"></div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="mt-24">
+    <div class="contact-grid">
+        <div class="p-12 md:p-24 bg-zinc-50 flex flex-col justify-between">
+            <div>
+                <h2 class="text-5xl font-light mb-8 uppercase tracking-tighter">Start a <br><span class="playfair italic">Conversation</span></h2>
+                <p class="text-gray-500 max-w-xs">I am always open to discussing new projects, creative ideas, research opportunities.... <br> OR <br>Even about music, movies, books, series, painting, growing plants and many more, If we connect !?</p>
+            </div>
+            <div class="mt-12 space-y-4">
+                <p class="text-sm font-bold tracking-widest uppercase">Socials</p>
+                <div class="flex space-x-6 text-gray-400">
+                    <a href="https://www.linkedin.com/in/astha-thapaa/" class="hover:text-black">LinkedIn</a>
+                    <a href="https://github.com/asthathapaa" class="hover:text-black">GitHub</a>
+                    <a href="https://www.behance.net/asthathapa" class="hover:text-black">Behance</a>
+                    <a href="https://asthathapa1.com.np" class="hover:text-black">Portfolio</a>
+                </div>
+            </div>
+        </div>
+        <div class="p-12 md:p-24 border-l border-gray-100">
+            <form action="https://formspree.io/f/xdkdlgkj" method="POST" class="space-y-12">
+                <div class="relative">
+                    <label class="text-[10px] uppercase tracking-widest font-bold text-gray-400 block mb-2">Your Name</label>
+                    <input type="text" name="name" required class="w-full border-b border-gray-200 pb-4 focus:outline-none focus:border-black transition">
+                </div>
+                <div class="relative">
+                    <label class="text-[10px] uppercase tracking-widest font-bold text-gray-400 block mb-2">Your Email</label>
+                    <input type="email" name="_replyto" required class="w-full border-b border-gray-200 pb-4 focus:outline-none focus:border-black transition">
+                </div>
+                <div class="relative">
+                    <label class="text-[10px] uppercase tracking-widest font-bold text-gray-400 block mb-2">Message</label>
+                    <textarea name="message" rows="3" required class="w-full border-b border-gray-200 pb-4 focus:outline-none focus:border-black transition"></textarea>
+                </div>
+                <button type="submit" class="group flex items-center text-sm font-bold uppercase tracking-[0.3em]">
+                    Send Message
+                    <span class="ml-4 h-[1px] w-12 bg-black group-hover:w-24 transition-all"></span>
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-12 px-8 flex justify-between items-center text-[10px] uppercase tracking-[0.3em] text-gray-400 border-t border-gray-50">
+    <p>© 2026 Astha Thapa</p>
+    <p>TRUST ME THERE'S MORE TO ME !!!</p>
+</footer>
+
+<script>
+    /* ── Drag-to-scroll for dev & design carousels ── */
+    function makeDraggable(el) {
+        let isDown = false, startX, scrollLeft;
+        el.addEventListener('mousedown', e => {
+            isDown = true;
+            el.classList.add('active');
+            startX = e.pageX - el.offsetLeft;
+            scrollLeft = el.scrollLeft;
+        });
+        el.addEventListener('mouseleave', () => { isDown = false; });
+        el.addEventListener('mouseup', () => { isDown = false; });
+        el.addEventListener('mousemove', e => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - el.offsetLeft;
+            el.scrollLeft = scrollLeft - (x - startX) * 1.5;
+        });
+    }
+    makeDraggable(document.getElementById('devScroll'));
+    makeDraggable(document.getElementById('designScroll'));
+
+    /* ── Glider for books ── */
+    new Glider(document.querySelector('.glider'), {
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        draggable: true,
+        dots: '.dots',
+        arrows: { prev: '.glider-prev', next: '.glider-next' },
+        responsive: [
+            { breakpoint: 1024, settings: { slidesToShow: 4, slidesToScroll: 1 } },
+            { breakpoint: 768,  settings: { slidesToShow: 2, slidesToScroll: 1 } },
+            { breakpoint: 480,  settings: { slidesToShow: 1, slidesToScroll: 1 } }
+        ]
+    });
+</script>
+</body>
+</html>
